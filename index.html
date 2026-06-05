@@ -67,6 +67,32 @@ body{
   transform:scale(1.07);
 }
 
+/* MOBILE MENU */
+@media (max-width: 768px){
+
+  header{
+    flex-direction:column;
+    gap:15px;
+    padding:15px 5%;
+  }
+
+  nav{
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  nav a{
+    font-size:14px;
+  }
+
+  .hero h1{
+    font-size:40px;
+  }
+
+}
+
 /* HEADER */
 header{
   position:sticky;
@@ -78,6 +104,22 @@ header{
   background:#000;
   z-index:1000;
   border-bottom:1px solid rgba(245,197,66,0.15);
+}
+
+nav{
+  display:flex;
+  gap:20px;
+}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:var(--accent);
 }
 
 .logo{
@@ -261,7 +303,7 @@ footer{
 <!-- FLOATING BUTTONS -->
 <div class="floating">
   <a class="floatBtn callBtn" href="tel:0451556884">📞 Call Now</a>
-  <a class="floatBtn whatsappBtn" href="https://wa.me/0451556884">💬 WhatsApp</a>
+  <a class="floatBtn whatsappBtn" href="https://wa.me/614511556884">💬 WhatsApp</a>
 </div>
 
 <!-- HERO -->
@@ -270,6 +312,14 @@ footer{
     <span class="logoMark">✂</span>
     FadeMate Barbers
   </div>
+
+  <nav>
+    <a href="#pricing">Pricing</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="#booking">Book Now</a>
+  </nav>
 </header>
 
 <section class="hero show">
@@ -281,7 +331,7 @@ footer{
 </section>
 
 <!-- PRICING -->
-<section>
+<section id="pricing">
 <h2>Pricing</h2>
 
 <div class="grid">
@@ -303,23 +353,23 @@ footer{
 </section>
 
 <!-- GALLERY -->
-<section>
+<section id="gallery">
 <h2>Inside FadeMate</h2>
 
 <div class="gallery-wrapper">
   <div class="gallery-track">
-    <img src="images/shop1.jpg">
-    <img src="images/shop2.jpg">
-    <img src="images/fade1.jpg">
-    <img src="images/client1.jpg">
-    <img src="images/beard1.jpg">
-    <img src="images/fade2.jpg">
+    <img src="https://yourwebsite.com/images/shop1.jpg">
+    <img src="https://yourwebsite.com/images/shop2.jpg">
+    <img src="https://yourwebsite.com/images/fade1.jpg">
+    <img src="https://yourwebsite.com/images/client1.jpg">
+    <img src="https://yourwebsite.com/images/beard1.jpg">
+    <img src="https://yourwebsite.com/images/fade2.jpg">
   </div>
 </div>
 </section>
 
 <!-- REVIEWS -->
-<section>
+<section id="reviews">
 <h2>What Clients Say</h2>
 
 <div class="review">
@@ -338,7 +388,7 @@ footer{
 </section>
 
 <!-- CONTACT -->
-<section>
+<section id="contact">
 <h2>Contact & Info</h2>
 
 <p style="margin-bottom:20px;color:var(--accent);">
