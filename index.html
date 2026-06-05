@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FadeMate Barbers</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins', sans-serif;
+}
+
+/* ===== YELLOW + BLACK THEME (UPDATED) ===== */
+:root{
+  --bg:#0a0a0a;
+  --card:#141414;
+  --accent:#f5c542;
+  --text:#ffffff;
+  --muted:#bdbdbd;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* FLOATING BUTTONS */
+.floating{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:9999;
+}
+
+.floatBtn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 14px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 0 18px rgba(0,0,0,0.4);
+  transition:0.3s;
+}
+
+.callBtn{
+  background:var(--accent);
+  color:#000;
+}
+
+.whatsappBtn{
+  background:#25D366;
+  color:#fff;
+}
+
+.floatBtn:hover{
+  transform:scale(1.07);
+}
+
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 8%;
+  background:#000;
+  z-index:1000;
+  border-bottom:1px solid rgba(245,197,66,0.15);
+}
+
+.logo{
+  color:var(--accent);
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logoMark{
+  background:var(--accent);
+  color:#000;
+  padding:5px 8px;
+  border-radius:6px;
+}
+
+/* HERO */
+.hero{
+  height:90vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),
+    url("https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1400&q=80")
+    center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:60px;
+}
+
+.hero p{
+  color:var(--muted);
+  margin-top:10px;
+}
+
+.badge{
+  margin-top:20px;
+  display:inline-block;
+  padding:10px 18px;
+  border:1px solid var(--accent);
+  color:var(--accent);
+  border-radius:30px;
+}
+
+/* SECTIONS */
+section{
+  padding:80px 8%;
+  text-align:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s ease;
+}
+
+section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+h2{
+  color:var(--accent);
+  margin-bottom:30px;
+}
+
+/* GRID */
+.grid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  width:220px;
+  transition:0.3s;
+  border:1px solid rgba(245,197,66,0.08);
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 18px rgba(245,197,66,0.2);
+}
+
+.vip{
+  border:2px solid var(--accent);
+}
+
+/* REVIEWS */
+.review{
+  max-width:700px;
+  margin:20px auto;
+  background:var(--card);
+  padding:25px;
+  border-radius:12px;
+  text-align:left;
+  border-left:3px solid var(--accent);
+}
+
+/* GALLERY */
+.gallery-wrapper{
+  width:100%;
+  margin-top:20px;
+}
+
+.gallery-track{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:15px;
+}
+
+.gallery-track img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.3s ease;
+  display:block;
+}
+
+.gallery-track img:hover{
+  transform:scale(1.03);
+}
+
+/* Tablet */
+@media (max-width: 900px){
+  .gallery-track{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px){
+  .gallery-track{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-track img{
+    height:220px;
+  }
+}
+
+/* CONTACT */
+.contactWrapper{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.box{
+  background:var(--card);
+  padding:25px;
+  border-radius:12px;
+  flex:1;
+  min-width:280px;
+  max-width:400px;
+  text-align:left;
+  border:1px solid rgba(245,197,66,0.08);
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  background:#000;
+  color:#aaa;
+  border-top:1px solid rgba(245,197,66,0.15);
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING BUTTONS -->
+<div class="floating">
+  <a class="floatBtn callBtn" href="tel:0451556884">📞 Call Now</a>
+  <a class="floatBtn whatsappBtn" href="https://wa.me/614511556884">💬 WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<header>
+  <div class="logo">
+    <span class="logoMark">✂</span>
+    FadeMate Barbers
+  </div>
+</header>
+
+<section class="hero show">
+  <div>
+    <h1>SHARP CUTS. CLEAN FADES.</h1>
+    <p>Premium grooming for modern style</p>
+    <div class="badge">⭐⭐⭐⭐⭐ 40+ 5-Star Reviews</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section>
+<h2>Pricing</h2>
+
+<div class="grid">
+  <div class="card">Zero Fade — $40</div>
+  <div class="card">Skin Fade — $45</div>
+  <div class="card">Normal Haircut — $35</div>
+  <div class="card">Scissors Cut — $39</div>
+  <div class="card">Trim Beard — $25</div>
+  <div class="card">Waxing — $20</div>
+  <div class="card">Face Scrub — $30</div>
+  <div class="card">Trim Eyebrows — $20</div>
+
+  <div class="card vip">
+    VIP PACKAGE<br>
+    Fade + Design + Eyebrows + Face Scrub<br>
+    <strong>$60</strong>
+  </div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section>
+<h2>Inside FadeMate</h2>
+
+<div class="gallery-wrapper">
+  <div class="gallery-track">
+    <img src="https://yourwebsite.com/images/shop1.jpg">
+    <img src="https://yourwebsite.com/images/shop2.jpg">
+    <img src="https://yourwebsite.com/images/fade1.jpg">
+    <img src="https://yourwebsite.com/images/client1.jpg">
+    <img src="https://yourwebsite.com/images/beard1.jpg">
+    <img src="https://yourwebsite.com/images/fade2.jpg">
+  </div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+<h2>What Clients Say</h2>
+
+<div class="review">
+  <h3>Krishal Kumar ⭐⭐⭐⭐⭐</h3>
+  <p>
+    Amazing service with great attention to detail. He took his time with the cut and made sure everything was perfect so I left looking my best. Super friendly barber and an awesome-looking shop as well. He checked in to make sure I was happy with everything before I left — highly recommend.
+  </p>
+</div>
+
+<div class="review">
+  <h3>Alisina Salihe ⭐⭐⭐⭐⭐</h3>
+  <p>
+    I’ve been getting my haircuts at Fade Mate Barbers for a while now, and every visit has been top notch. The barbers are skilled, friendly, and take the time to get every detail right. You can tell they genuinely care about their craft and the overall experience is always relaxed and welcoming.
+  </p>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section>
+<h2>Contact & Info</h2>
+
+<p style="margin-bottom:20px;color:var(--accent);">
+⚠️ For appointments, book via call
+</p>
+
+<div class="contactWrapper">
+
+  <div class="box">
+    <p><strong>📞</strong> 0451 556 884</p>
+    <p><strong>📍</strong> 35 Keskadale Way, Clyde North VIC 3978</p>
+  </div>
+
+  <div class="box">
+    <h3>Opening Hours</h3>
+    <p>
+      Monday: 9am–6pm<br>
+      Tuesday: 9am–6pm<br>
+      Wednesday: 9am–5pm<br>
+      Thursday: 9am–5pm<br>
+      Friday: 9am–5pm<br>
+      Saturday: 9am–6pm<br>
+      Sunday: 9am–6pm
+    </p>
+  </div>
+
+<div class="box">
+  <h3>Socials</h3>
+
+  <p>
+    <a href="https://www.instagram.com/barber0061" target="_blank" style="color:var(--accent);text-decoration:none;font-size:18px;">
+     Instagram: @barber0061
+    </a>
+  </p>
+
+  <p>
+    <a href="https://www.tiktok.com/@hekmat4428" target="_blank" style="color:var(--accent);text-decoration:none;font-size:18px;">
+    TikTok: @hekmat4428
+    </a>
+  </p>
+</div>
+
+</div>
+
+<!-- GOOGLE MAP (ADDED) -->
+<iframe
+  src="https://www.google.com/maps?q=35+Keskadale+Way,+Clyde+North+VIC+3978&output=embed"
+  height="320"
+  style="width:100%;border:0;border-radius:12px;margin-top:30px;">
+</iframe>
+
+</section>
+
+<footer>
+© 2026 FadeMate Barbers
+</footer>
+
+<script>
+// SCROLL REVEAL
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{threshold:0.15});
+
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
