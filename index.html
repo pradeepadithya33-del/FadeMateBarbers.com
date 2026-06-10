@@ -229,6 +229,41 @@ h2{
   border-left:3px solid var(--accent);
 }
 
+/* Reviews image behind reviews */
+.reviews-section{
+  position:relative;
+  overflow:hidden;
+}
+
+.review-image{
+  position:absolute;
+  right:5%;
+  top:50%;
+  transform:translateY(-50%);
+  width:280px;
+  height:420px;
+  border-radius:25px;
+  background:url("images/cutting1.jpeg") center/cover no-repeat;
+
+  opacity:0.25; /* makes reviews readable */
+  z-index:0;
+
+  border:2px solid rgba(245,197,66,0.15);
+}
+
+/* Keep reviews above image */
+.review{
+  position:relative;
+  z-index:2;
+}
+
+/* Mobile */
+@media (max-width: 1000px){
+  .review-image{
+    display:none;
+  }
+}
+
 /* GALLERY */
 .gallery-wrapper{
   width:100%;
@@ -390,6 +425,7 @@ footer{
     I’ve been getting my haircuts at Fade Mate Barbers for a while now, and every visit has been top notch. The barbers are skilled, friendly, and take the time to get every detail right. You can tell they genuinely care about their craft and the overall experience is always relaxed and welcoming.
   </p>
 </div>
+<div class="review-image"></div>
 </section>
 
 <!-- CONTACT -->
